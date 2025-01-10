@@ -32,11 +32,12 @@ jobs:
           go-version: '1.21'
           cache: true
 
-      - name: Create tag
-        run: |
-          git tag -a v${{ steps.gitversion.outputs.semVer }} -m "Release v${{ steps.gitversion.outputs.semVer }}"
-          git push origin v${{ steps.gitversion.outputs.semVer }}
-      
+      - uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: v${{ steps.gitversion.outputs.semVer }}
+          tag_exists_error: false
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:

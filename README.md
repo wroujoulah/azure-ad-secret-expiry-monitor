@@ -28,7 +28,7 @@ git clone https://github.com/wroujoulah/azure-ad-secret-expiry-monitor.git
 cd azure-ad-secret-expiry-monitor
 
 # Build the binary
-go build
+go build -o asm
 ```
 
 ## Configuration
